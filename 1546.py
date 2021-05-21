@@ -8,4 +8,4 @@ for i in scores:
 for i in scores:
     new_score = int(i) / max * 100
     new_scores += new_score
-print(new_scores/N)
+print(new_scores / N)

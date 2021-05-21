@@ -5,13 +5,14 @@ def d(n):
         ret += int(i)
     return ret
 
+
 not_self = []
 
 for i in range(1, 10000):
     n = i
     while n < 10000:
         n = d(n)
-        #print(n)
+        # print(n)
         if n in not_self:
             break
         else:

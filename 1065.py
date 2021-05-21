@@ -9,15 +9,15 @@ def isSequence(n):
     else:
         difference = list_n[1] - list_n[0]
 
-    for i in range(len(list_n) -1):
-        if (list_n[i+1] - list_n[i]) != difference:
+    for i in range(len(list_n) - 1):
+        if (list_n[i + 1] - list_n[i]) != difference:
             return False
     return True
 
 
 N = int(input())
 count = 0
-for i in range(1, N+1):
+for i in range(1, N + 1):
     if isSequence(i):
         count += 1
 print(count)

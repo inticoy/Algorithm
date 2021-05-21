@@ -8,6 +8,7 @@ def isGroup(text):
             return False
     return True
 
+
 N = int(input())
 count = 0
 for time in range(N):
