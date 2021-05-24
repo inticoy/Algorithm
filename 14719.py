@@ -8,5 +8,7 @@ for i in range(len(line)):
     line[i] = int(line[i])
 
 sum = H * W - sum(line)
+max = line[0]
+
 
 print(sum)
