@@ -8,15 +8,13 @@ for i in range(min, max + 1):
     isSqr.append(0)
 
 
-sqr = []
+sqr = set()
 sqrt = int(math.sqrt(max)) + 1
 for i in range(2, sqrt):
-    sqr.append(i * i)
-
+    sqr.add(i * i)
 
 for i in sqr:
     start = i * (int(min / i) + 1)
-    print(start)
     for j in range(start, max + 1, i):
         isSqr[j - min] = 1
 
