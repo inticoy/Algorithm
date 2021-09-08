@@ -2,11 +2,11 @@ import operator
 
 
 def solution(weights, head2head):
-    num_boxers = range(len(head2head))
+    num = len(head2head)
+    num_boxers = range(num)
     win_rate = [0. for i in num_boxers]  # win rate for each boxers
     # number of win heavier boxers for each boxers
     num_heavy = [0 for i in num_boxers]
-    answer = []
 
     for i in num_boxers:
         total_battle = 0  # number of battle
@@ -23,12 +23,28 @@ def solution(weights, head2head):
         if total_battle != 0:
             win_rate[i] = total_win / total_battle
 
-    values = [10000000000 * win_rate[i] * 100 +
-              10000000 * num_heavy[i] +
-              10000 * weights[i] +
-              len(weights) - i for i in num_boxers]
+    answer = []
+    player_num = [i for i in num_boxers]
 
-    test = dict(zip(range(1, len(weights) + 1), values))
-    stest = sorted(test.items(), key=operator.itemgetter(1), reverse=True)
-    answer = [i[0] for i in stest]
-    return answer
+    for i in num_boxers:
+        max_index = i
+        for j in range(i + 1, num):
+            if win_rate[max_index] < win_rate[j]:
+                max_index = j
+            elif win_rate[max_index] == win_rate[j]:
+                if num_heavy[max_index] < win_rate[j]:
+                    max_index = j
+                elif num_heavy[max_index] == win_rate[j]:
+                    if weights[max_index] < weights[j]:
+                        max_index = j
+                    elif weights[max_index] == weights[j]:
+                        if player_num[max_index] > player_num[j]:
+                            max_index = j
+        win_rate[i], win_rate[max_index] = win_rate[max_index], win_rate[i]
+        num_heavy[i], num_heavy[max_index] = num_heavy[max_index], num_heavy[i]
+        weights[i], weights[max_index] = weights[max_index], weights[i]
+        player_num[i], player_num[max_index] = player_num[max_index], player_num[i]
+
+    player_num = [(i + 1) for i in player_num]
+
+    return player_num
