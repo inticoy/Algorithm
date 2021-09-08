@@ -34,7 +34,7 @@ def solution(weights, head2head):
             elif win_rate[max_index] == win_rate[j]:
                 if num_heavy[max_index] < win_rate[j]:
                     max_index = j
-                elif num_heavy[max_index] == win_rate[j]:
+                elif num_heavy[max_index] == num_heavy[j]:
                     if weights[max_index] < weights[j]:
                         max_index = j
                     elif weights[max_index] == weights[j]:
