@@ -2,14 +2,16 @@ def solution(scores):
     answer = ''
     average = 0
     num = len(scores)
-    _scores = [[0 for j in range(num)] for i in range(num)]
+
+    s = [0 for i in range(num)]
+
     for i in range(num):
         for j in range(num):
-            _scores[i][j] = scores[j][i]
+            s[j] = scores[j][i]
 
-    for i, s in enumerate(_scores):
         self_score = s[i]
-        if (self_score == max(s) and s.count(self_score) == 1) or (self_score == min(s) and s.count(self_score) == 1):
+
+        if s.count(self_score) == 1 and (self_score == max(s) or self_score == min(s)):
             average = (sum(s) - self_score) / (num - 1)
         else:
             average = sum(s) / num
@@ -23,7 +25,6 @@ def solution(scores):
             answer += 'D'
         else:
             answer += 'F'
-
         average = 0
 
     return answer
