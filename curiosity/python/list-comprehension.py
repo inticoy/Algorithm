@@ -1,6 +1,6 @@
 import time
 
-num = 10 ** 4
+num = 10 ** 6
 
 start = time.time()
 list_comprehension = [i for i in range(num)]
@@ -34,17 +34,11 @@ list_range = list(range(num))
 end = time.time()
 print("list(range()) :\t", end - start)
 
-start = time.time()
-list_comprehension = [i**i for i in range(num)]
-end = time.time()
-print("[for i in] :\t", (end - start))
 
 start = time.time()
-list_append = []
-for i in range(num):
-    list_append.append(i**i)
+list_range = [0] * num
 end = time.time()
-print("[].append() :\t", (end - start))
+print("list(range()) :\t", end - start)
 
 
 start = time.time()
