@@ -1,9 +1,12 @@
 def solution(word):
     n = len(word)
     word2num = 0
+    answer = 0
 
-    d = {'A': 1, 'E': 2, 'I': 3, 'O': 4, 'U': 5}
+
+    l = [781, 156, 31, 6, 1]
+    d = {'A':0, 'E':1, 'I':2, 'O':3, 'U':4}
     for i, j in enumerate(word):
-        word2num += d[j] * (10 ** (-1 * i))
-
-    return word2num
+        answer += l[i] * d[j]
+    answer += 1
+    return answer
