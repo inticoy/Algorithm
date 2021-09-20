@@ -1,6 +1,6 @@
 import time
 
-num = 10 ** 6
+num = 10 ** 5
 
 start = time.time()
 list_comprehension = [i for i in range(num)]
