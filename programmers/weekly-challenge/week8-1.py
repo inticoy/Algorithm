@@ -1,9 +1,7 @@
 def solution(sizes):
-    answer = 0
-
     list1, list2 = zip(*sizes)
-
-    return list1
+    answer = max(list1) * max(list2)
+    return answer
 
 
 print(solution([[60, 50], [30, 70], [60, 30], [80, 40]]))
