@@ -1,9 +1,8 @@
 #include <iostream>
 
 using namespace std;
-int main(void)
-{
-  int T, k, n, i; // variables for problem
+int main(void) {
+  int T, k, n, i;   // variables for problem
   int people, x, y; // variables for adding
   cin >> T;
 
@@ -13,7 +12,7 @@ int main(void)
     people = 0;
     y = k + 1;
 
-    for (x = 1; x <= n; x++){
+    for (x = 1; x <= n; x++) {
       // people += x * y;
       // y--;
       // cout << "people: " << people << endl;

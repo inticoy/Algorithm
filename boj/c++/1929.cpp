@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main(void){
+int main(void) {
   int m, n, i, j;
 
   cin >> m >> n;
@@ -13,21 +13,21 @@ int main(void){
   is_prime[0] = false;
   is_prime[1] = false;
 
-  for (i = 2; i < n + 1; i++){
+  for (i = 2; i < n + 1; i++) {
     is_prime[i] = true;
   }
 
   for (i = 2; i <= n; i++) {
-    if (is_prime[i]){
+    if (is_prime[i]) {
       prime_nums[num_prime_nums] = i;
       num_prime_nums++;
-      for (j = 2 * i; j <= n; j += i){
+      for (j = 2 * i; j <= n; j += i) {
         is_prime[j] = false;
       }
     }
   }
 
-  for (i = m; i <= n; i++){
+  for (i = m; i <= n; i++) {
     if (is_prime[i]) {
       cout << i << "\n";
     }

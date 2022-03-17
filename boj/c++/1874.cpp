@@ -2,13 +2,13 @@
 
 using namespace std;
 
-int main(void){
+int main(void) {
   int n, i;
 
   cin >> n;
   int sequence[n];
 
-  for (i = 0; i < n; i++){
+  for (i = 0; i < n; i++) {
     cin >> sequence[i];
   }
 
@@ -21,8 +21,8 @@ int main(void){
   char answer[n * 2];
   int i_answer = 0;
 
-  for (i = 0; i < n; i++){
-    while(true){
+  for (i = 0; i < n; i++) {
+    while (true) {
       if (top < sequence[i]) {
         stack[stack_len] = next_num;
         top = next_num;
@@ -43,7 +43,7 @@ int main(void){
         break;
       }
     }
-    if(impossible){
+    if (impossible) {
       break;
     }
   }
@@ -51,11 +51,10 @@ int main(void){
   if (impossible) {
     cout << "NO";
   } else {
-    for (i = 0; i < i_answer; i++){
+    for (i = 0; i < i_answer; i++) {
       cout << answer[i] << "\n";
     }
   }
-
 
   return 0;
 }

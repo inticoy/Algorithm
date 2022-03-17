@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -16,7 +16,7 @@ using namespace std;
 int cal_accum(int n);
 bool is_end(int n);
 
-int main(void){
+int main(void) {
   int num_movie, normal;
   int i = -1;
   int digits = 2;
@@ -25,7 +25,7 @@ int main(void){
 
   cin >> num_movie;
 
-  while(accum < num_movie){
+  while (accum < num_movie) {
     i++;
     digits++;
     accum = cal_accum(i);
@@ -51,23 +51,26 @@ int main(void){
   return 0;
 }
 
-int cal_accum(int n){
+int cal_accum(int n) {
   int i;
   int ret = 0;
   ret += (n + 1) * pow(10, n) - n * pow(10, n - 1);
   return ret;
 }
 
-bool is_end(int n){
+bool is_end(int n) {
   bool ret = false;
   string number = to_string(n);
   int len = number.length();
   int i;
   int count = 0;
   for (i = 0; i < len; i++) {
-    if (number[i] == '6') count++;
-    else count = 0;
-    if(count == 3) ret = true;
+    if (number[i] == '6')
+      count++;
+    else
+      count = 0;
+    if (count == 3)
+      ret = true;
   }
   return ret;
 }

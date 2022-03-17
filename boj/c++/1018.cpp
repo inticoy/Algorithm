@@ -1,10 +1,9 @@
-#include <iostream>
 #include <climits>
+#include <iostream>
 
 using namespace std;
 
-int main(void)
-{
+int main(void) {
   int m, n, i, j, x, y, number;
   int min = INT_MAX;
   char input;
@@ -14,11 +13,13 @@ int main(void)
 
   // black as 0, white as 1
   bool arr[m][n];
-  for(i = 0; i < m; i++){
-    for (j = 0; j < n; j++){
+  for (i = 0; i < m; i++) {
+    for (j = 0; j < n; j++) {
       cin >> input;
-      if(input == 'B') arr[i][j] = 0;
-      else arr[i][j] = 1;
+      if (input == 'B')
+        arr[i][j] = 0;
+      else
+        arr[i][j] = 1;
     }
   }
 
@@ -27,16 +28,19 @@ int main(void)
       standard = arr[x][y];
       number = 0;
 
-      for(i = x; i < x + 8; i++){
+      for (i = x; i < x + 8; i++) {
         for (j = y; j < y + 8; j++) {
-          if (arr[i][j] == standard) number++;
+          if (arr[i][j] == standard)
+            number++;
           standard = !standard;
         }
         standard = !standard;
       }
 
-      if(number > 32) number = 64 - number;
-      if (number < min) min = number;
+      if (number > 32)
+        number = 64 - number;
+      if (number < min)
+        min = number;
     }
   }
 
