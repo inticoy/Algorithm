@@ -1,3 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   6_PICNIC_BF.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gyoon <gyoon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 17:11:17 by gyoon             #+#    #+#             */
+/*   Updated: 2023/11/28 17:14:57 by gyoon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
+ * id:			PICNIC
+ * link:		https://algospot.com/judge/problem/read/PICNIC
+ * algorithm:	brute-force
+ */
+
 #include <iostream>
 
 int getSingleIdx(bool haveFriend[], int n)
@@ -39,10 +57,12 @@ int main()
     bool friendTable[10][10];
     bool haveFriend[10];
     int n, m, f1, f2;
+
     std::cin >> testcase;
 
     for (int test = 0; test < testcase; test++)
     {
+        // reset arrays
         for (int i = 0; i < 10; i++)
             for (int j = 0; j < 10; j++)
                 friendTable[i][j] = false;
