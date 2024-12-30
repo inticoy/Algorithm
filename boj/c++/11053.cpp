@@ -6,7 +6,7 @@ int main(int argc, char const *argv[])
 {
     int n = 0;
     int a[1000];
-    int diff[999];
+    int dp[1000];
     int answer = 0;
 
     cin >> n;
@@ -14,14 +14,19 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < n; i++)
         cin >> a[i];
 
-    for (int i = 0; i < n - 1; i++)
-        diff[i] = a[i + 1] - a[i];
+    for (int i = 0; i < n; i++)
+    {
+        dp[i] = 1;
+        for (int j = 0; j < i; j++)
+            if (a[j] < a[i] && dp[j] >= dp[i])
+                dp[i] = dp[j] + 1;
+    }
 
-    for (int i = 0; i < n - 1; i++)
-        if (diff[i] > 0)
-            answer++;
+    for (int i = 0; i < n; i++)
+        if (dp[i] > answer)
+            answer = dp[i];
 
-    cout << answer + 1;
+    cout << answer;
 
     return 0;
 }
