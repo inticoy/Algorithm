@@ -1,17 +1,16 @@
 #include <iostream>
-#include <map>
-#include <utility>
+#include <vector>
 
 using namespace std;
 
-void explore(int n, int node, multimap<int, int> edge, int parent[])
+void explore(int n, int node, vector<int> edge[], int parent[])
 {
-    for (multimap<int, int>::iterator it = edge.lower_bound(node); it != edge.upper_bound(node); it++)
+    for (vector<int>::iterator it = edge[node].begin(); it != edge[node].end(); it++)
     {
-        if ((*it).second == parent[node])
+        if ((*it) == parent[node])
             continue;
-        parent[(*it).second] = node;
-        explore(n, (*it).second, edge, parent);
+        parent[(*it)] = node;
+        explore(n, (*it), edge, parent);
     }
 }
 
@@ -21,19 +20,16 @@ int main()
     cin.tie(NULL);                    // untie std::cin && std::cout
 
     int n, a, b;
-    int parent[100001];
-    multimap<int, int> edge;
+    int parent[100001] = {0};
+    vector<int> edge[100001];
 
     cin >> n;
-
-    for (int i = 0; i <= 100000; i++)
-        parent[i] = 0;
 
     for (int i = 0; i < n - 1; i++)
     {
         cin >> a >> b;
-        edge.insert(make_pair(a, b));
-        edge.insert(make_pair(b, a));
+        edge[a].push_back(b);
+        edge[b].push_back(a);
     }
 
     explore(n, 1, edge, parent);
