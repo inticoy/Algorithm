@@ -2,42 +2,36 @@
 
 using namespace std;
 
-int nqueen(int curr, int n, int board[][16])
+int nqueen(int curr, int n, int row[], int col[])
 {
     int answer = 0;
-    int attack = 0;
+    bool attack = false;
 
     if (curr > n)
         return 1;
 
     for (int i = 1; i <= n; i++)
     {
-        if (board[0][i])
+        if (col[i])
             continue;
 
-        attack = 0;
+        attack = false;
 
         for (int j = 1; j < curr; j++)
-        {
-            if (board[j][0] == 0)
-                continue;
-
-            if (board[j][0] + j == i + curr || board[j][0] - j == i - curr)
-                attack = 1;
-        }
+            if (row[j] + j == i + curr || row[j] - j == i - curr)
+                attack = true;
 
         if (attack)
             continue;
 
-        board[curr][0] = i;
-        board[0][i] = curr;
+        row[curr] = i;
+        col[i] = curr;
 
-        answer += nqueen(curr + 1, n, board);
+        answer += nqueen(curr + 1, n, row, col);
 
-        board[curr][0] = 0;
-        board[0][i] = 0;
+        row[curr] = 0;
+        col[i] = 0;
     };
-    board[curr][0] = 0;
 
     return answer;
 }
@@ -48,14 +42,17 @@ int main(int argc, char const *argv[])
     cin.tie(NULL);                    // untie std::cin && std::cout
 
     int n;
-    int board[16][16];
+    int row[15];
+    int col[15];
 
     cin >> n;
 
-    for (int i = 0; i < 16; i++)
-        for (int j = 0; j < 16; j++)
-            board[i][j] = 0;
+    for (int i = 0; i < 15; i++)
+    {
+        row[i] = 0;
+        col[i] = 0;
+    }
 
-    cout << nqueen(1, n, board);
+    cout << nqueen(1, n, row, col);
     return 0;
 }
